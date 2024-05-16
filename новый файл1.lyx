@@ -1,0 +1,273 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Постановка задачи:
+\end_layout
+
+\begin_layout Standard
+Между двумя металлическими электродами находится ряд квантовых точек, которые
+ имеют разброс по размерам и положению, из-за чего меняются значения уровня
+ энергии 
+\series bold
+
+\begin_inset Formula $E_{0}$
+\end_inset
+
+
+\series default
+, кулоновской блокады 
+\begin_inset Formula $U_{0}$
+\end_inset
+
+ и уширения уровня 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Разбос выражается в небольшом изменении размера квантовой точки (на величину
+ много меньшую самого размера), а также положения квантовой точки относительно
+ электродов (на величину, много меньшую расстояния между электродами), то
+ есть для каждой квантовой точки получаем:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a_{n}=a_{0}+\delta a_{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{n}=x_{0}+\delta x_{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Величина 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ зависит от положения начала координат, можно взять 
+\begin_inset Formula $0$
+\end_inset
+
+ в середине между электродами, тогда 
+\begin_inset Formula $x_{0}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Изменение в размере приводит к изменению в положении уровня энергии:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{n}=E_{0}+\delta E_{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E_{n}\propto\frac{1}{a_{n}^{2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+От положения может зависеть
+\begin_inset Formula $\gamma_{n}$
+\end_inset
+
+, но в первом приближении можно влияние положения не учитывать.
+\end_layout
+
+\begin_layout Standard
+Кроме того, имеется затвор (предполагаем, что он расположен снизу под подложкой)
+, напряжение на котором сдвигает уровень энергии 
+\begin_inset Formula $E_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+То есть считаем, что 
+\begin_inset Formula $F_{2}=0,F_{1}=eV$
+\end_inset
+
+(напряжение между истоком и стоком транзистора),
+\begin_inset Formula $E_{0}=eV_{g}$
+\end_inset
+
+ (напряжение между стоком и затвором).
+\end_layout
+
+\begin_layout Standard
+Ток через несколько квантовых точек равен просто сумме токов через каждую
+ квантовую точку в отдельности.
+ 
+\end_layout
+
+\begin_layout Subsection
+Решение этой задачи
+\end_layout
+
+\begin_layout Standard
+Я решил эту задачу, используя код в MATLAB.
+\end_layout
+
+\begin_layout Standard
+\SpecialChar nobreakdash
+
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+% Параметры N = 100;  a0 = 1e-9;  x0 = 0;  E0 = 1e-3;  U0 = 1e-3; gamma0
+ = 1e-5;  delta_a_max = 1e-10;  delta_x_max = 1e-10;  V = 0.1;  Vg = 0.05;
+ e = 1.602e-19;  hbar = 1.054e-34; 
+\end_layout
+
+\begin_layout Plain Layout
+
+% Случайные отклонения delta_a = delta_a_max * (2 * rand(1, N) - 1); delta_x
+ = delta_x_max * (2 * rand(1, N) - 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% Параметры квантовых точек a = a0 + delta_a; x = x0 + delta_x;
+\end_layout
+
+\begin_layout Plain Layout
+
+% Уровни энергии E = E0 + (e * Vg) + (hbar^2 ./ (2 * e * a.^2));
+\end_layout
+
+\begin_layout Plain Layout
+
+% Ток через каждую квантовую точку I = zeros(1, N); for n = 1:N     gamma
+ = gamma0; % Предполагаем, что gamma постоянна     I(n) = (e^2 / hbar) *
+ gamma * (E(n) / (E(n)^2 + (gamma^2 / 4))); end
+\end_layout
+
+\begin_layout Plain Layout
+
+% Общий ток I_total = sum(I);
+\end_layout
+
+\begin_layout Plain Layout
+
+% Отображение общего тока fprintf('Общий ток через квантовые точки: %e A
+\backslash
+n', I_total); 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
